@@ -12,3 +12,20 @@ services:
       - ./app:/app
     command: >
       sh -c "python3 manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=yourchance_db
+      - DB_USER=yourchance_user
+      - DB_PASS=yourchance
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=yourchance_db
+      - POSTGRES_USER=yourchance_user
+      - POSTGRES_PASSWORD=yourchance
+
+volumes:
+  dev-db-data:
