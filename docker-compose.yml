@@ -19,7 +19,9 @@ services:
       - DB_NAME=yourchance_db
       - DB_USER=yourchance_user
       - DB_PASS=yourchance
-
+    depends_on:
+      - db
+  
   db:
     image: postgres:13-alpine
     volumes:
